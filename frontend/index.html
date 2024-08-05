@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css">
+    <title>Custom Caffe</title>
+  </head>
+  <body>
+    <div id="main">
+      <!-- starting loading animation -->
+      <div class="loader">
+        <h2 class="zoom">CUSTOM</h2>
+        <h1 class="scramble">CAFFE</h1>
+        <div class="loading"></div>
+      </div>
+      <!-- ending loading animation -->
+
+      <div class="donutAnimateGrp">
+        <div id="dotBg">
+          <img src="/assets/images/donut.png" alt="donut" id="donut">
+          <img src="/assets/images/C.svg" alt="letter C img"  id="letterC" class="letters">
+          <img src="/assets/images/U.svg" alt="letter U img"  id="letterU" class="letters">
+          <img src="/assets/images/S.svg" alt="letter S img"  id="letterS" class="letters">
+          <img src="/assets/images/T.svg" alt="letter T img"  id="letterT" class="letters">
+          <img src="/assets/images/O.svg" alt="letter O img"  id="letterO" class="letters">
+          <img src="/assets/images/M.svg" alt="letter M img"  id="letterM" class="letters">
+          
+          <img src="/assets/images/C.svg" alt="letter C2 img"  id="letterC2" class="letters">
+          <img src="/assets/images/A.svg" alt="letter A img"  id="letterA" class="letters">
+          <img src="/assets/images/F.svg" alt="letter F img"  id="letterF" class="letters">
+          <img src="/assets/images/F.svg" alt="letter F2 img"  id="letterF2" class="letters">
+          <img src="/assets/images/E.svg" alt="letter E img"  id="letterE" class="letters">
+        </div>
+        <div id="explore">
+          <h1 onclick="setTimeout(example,1200)">Explore</h1>
+        </div>
+      </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../assets/js/descrambler.min.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
