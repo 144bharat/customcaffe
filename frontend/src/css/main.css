@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;
+    height: 100vh;
+}
+#main{
+    width:100%;
+    min-height: 100vh;
+    background-color: rgb(23, 22, 22);
+  }
+
+  .donutanimate{
+    position: relative;
+    width: 100%;
+    height: 700vh;
+    background-color: chocolate;
+  }
+  .donutBG{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  #donutframe{
+    width: 100%;
+    height: 100vh;
+    /* background-color: brown; */
+  }
