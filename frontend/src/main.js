@@ -7,14 +7,14 @@ gsap.registerPlugin(ScrollTrigger); // Register the plugin
     const canvapencil = canvas.getContext("2d");
     const frames = {
         currIndex:0,
-        maxIndex:73
+        maxIndex:124
     }
     let imagesLoaded = 0;
     const Images = [];
     function preLoadFrames(){
         for(let i=0;i<=frames.maxIndex;i++)
         {
-            let imgUrl = `/assets/images/donut-frames/7033923-uhd_3840_2160_25fps_${i.toString().padStart(3,"0")}.jpg`;
+            let imgUrl = `/assets/images/coffee-frames/custom_caffe_animation_video_${i.toString().padStart(3,"0")}.jpg`;
             // console.log(imgUrl+"\n");
 
             const img = new Image();
@@ -63,9 +63,12 @@ gsap.registerPlugin(ScrollTrigger); // Register the plugin
         var t3 = gsap.timeline({
             scrollTrigger:{
                 trigger: ".donutanimate",
-                start: "top top",
+                start: "-1vh top",
                 scrub: 2,
-                markers: true
+                markers: true,
+                onInit: function () {
+                    loadImage(0); // Load the first image when the animation initializes
+                }
             }
         })
         t3.to(frames,{
@@ -77,3 +80,7 @@ gsap.registerPlugin(ScrollTrigger); // Register the plugin
     }
     
     preLoadFrames();
+
+    document.getElementById("explorebtn").addEventListener("click",()=>{
+        window.location.href='/src/htmls/explore.html';
+    })

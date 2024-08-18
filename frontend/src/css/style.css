@@ -129,7 +129,7 @@ html, body{
   display:flex;
   align-items: center;
   justify-content: center;
-  background-image: url(/assets/images/back1.jpg);
+  background-image: url(/assets/images/donut_bg_21.jpg);
   background-size: cover;
   background-position: bottom;
   opacity: 0;
@@ -144,7 +144,7 @@ html, body{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(/assets/images/back.png);
+  background-image: url(/assets/images/b__ack.png);
   background-size: cover;
   background-position: center;
   animation: dott 8s ease-in-out alternate infinite;

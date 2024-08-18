@@ -234,6 +234,6 @@ var timeline = gsap.timeline();
     let explore = document.getElementById("explore");
     explore.addEventListener("click",(e)=>{
         setTimeout(() => {
-            window.location.replace("/src/htmls/main.html");
+            window.location.href = "/src/htmls/main.html";
         }, 1200);
     })

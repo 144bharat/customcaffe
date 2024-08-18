@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "gsap": "^3.12.5",
+    "locomotive-scroll": "^4.1.4",
     "scramble-text": "^0.0.9"
   }
 }
