@@ -49,7 +49,6 @@
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import LocomotiveScroll from 'locomotive-scroll'; // Note the absence of curly braces
 gsap.registerPlugin(ScrollTrigger);
 
 // // Define the background color changes for each section
@@ -59,6 +58,7 @@ const sections = [
     { trigger: ".both",childtrigger: ".both .right", color: "#FFEAE0" }    // Example color for Both section
 ];
 
+
 // Loop through each section and create a ScrollTrigger for background color change
 sections.forEach(section => {
     ScrollTrigger.create({
@@ -66,9 +66,13 @@ sections.forEach(section => {
         start: "top 50%",
         end: "bottom 50%",
         scrub: true,
-        onEnter: () => gsap.to("#main", { backgroundColor: section.color, duration: 2, overwrite: "auto" }),
-        onEnterBack: () => gsap.to("#main", { backgroundColor: section.color, duration: 2, overwrite: "auto" }),
-        markers: true // Optional: shows the start and end markers for debugging
+        onEnter: () => {gsap.to("#main", { backgroundColor: section.color, duration: 2, overwrite: "auto" }),
+        gsap.to(section.childtrigger, { opacity:"1",rotate:"10",y:"12vh", duration: 1, overwrite: "auto" })
+    },
+        onEnterBack: () => {gsap.to("#main", { backgroundColor: section.color, duration: 2, overwrite: "auto" }),
+        gsap.to(section.childtrigger, { opacity:"1",scale:"0.9",rotate:"0",y:"0vh", duration: 1, overwrite: "auto" })
+    },
+        // markers: true // Optional: shows the start and end markers for debugging
     });
 });
 
@@ -80,8 +84,4 @@ document.getElementById("main").addEventListener("mousemove", (val) => {
         y: val.y,
         duration: 0.6
     });
-});
-const scroll = new LocomotiveScroll({
-    el: document.querySelector("#main"),
-    smooth: true
 });
