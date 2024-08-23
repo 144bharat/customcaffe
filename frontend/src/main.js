@@ -7,14 +7,14 @@ gsap.registerPlugin(ScrollTrigger); // Register the plugin
     const canvapencil = canvas.getContext("2d");
     const frames = {
         currIndex:0,
-        maxIndex:124
+        maxIndex:107
     }
     let imagesLoaded = 0;
     const Images = [];
     function preLoadFrames(){
         for(let i=0;i<=frames.maxIndex;i++)
         {
-            let imgUrl = `/assets/images/coffee-frames/custom_caffe_animation_video_${i.toString().padStart(3,"0")}.jpg`;
+            let imgUrl = `/assets/images/boy-burger/boy-burger_${i.toString()}.jpg`;//.padStart(3,"0")
             // console.log(imgUrl+"\n");
 
             const img = new Image();
@@ -65,7 +65,7 @@ gsap.registerPlugin(ScrollTrigger); // Register the plugin
                 trigger: ".donutanimate",
                 start: "-1vh top",
                 scrub: 2,
-                markers: true,
+                // markers: true,
                 onInit: function () {
                     loadImage(0); // Load the first image when the animation initializes
                 }
