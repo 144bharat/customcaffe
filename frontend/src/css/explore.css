@@ -94,6 +94,7 @@ html,body{
 #quote span{
     animation: loadheart 1s infinite;
     font-size: 46px;
+    font-weight: 900;
 }
 #cursorfollower{
     width: 20px;

@@ -66,11 +66,17 @@ sections.forEach(section => {
         start: "top 50%",
         end: "bottom 50%",
         scrub: true,
-        onEnter: () => {gsap.to("#main", { backgroundColor: section.color, duration: 2, overwrite: "auto" }),
-        gsap.to(section.childtrigger, { opacity:"1",rotate:"10",y:"12vh", duration: 1, overwrite: "auto" })
+        onEnter: () => {
+            gsap.to("#nav", { backgroundColor: "black", duration: 2, overwrite: "auto" }),
+            gsap.to("#main", { backgroundColor: section.color, duration: 2, overwrite: "auto" }),
+            gsap.to(section.childtrigger, { opacity:"1",rotate:"10",y:"12vh", duration: 1, overwrite: "auto" })
     },
-        onEnterBack: () => {gsap.to("#main", { backgroundColor: section.color, duration: 2, overwrite: "auto" }),
-        gsap.to(section.childtrigger, { opacity:"1",scale:"0.9",rotate:"0",y:"0vh", duration: 1, overwrite: "auto" })
+        onEnterBack: () => {
+            if (section.trigger == '.snacks') {
+                gsap.to("#nav", { backgroundColor: "transparent", duration: 2, overwrite: "auto" })
+            }
+            gsap.to("#main", { backgroundColor: section.color, duration: 2, overwrite: "auto" }),
+            gsap.to(section.childtrigger, { opacity:"1",scale:"0.9",rotate:"0",y:"0vh", duration: 1, overwrite: "auto" })
     },
         // markers: true // Optional: shows the start and end markers for debugging
     });
