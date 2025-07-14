@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Agbalumo');
 @font-face {
     font-family: loaderBack;
     src: url(/assets/fonts/chaney-ultraextended-webfont.ttf);
@@ -9,21 +10,37 @@
 }
 
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html,body{
+body{
     width: 100%;
     height: 100vh;
+    background-color: black;
 }
-#main{
+:root {
+  --bg-color: hsl(0, 0%, 0%);
+}
+
+#main::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-color);
+  transition: background-color 0.4s ease;
+  z-index: -1;
+}
+
+ #main{
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    background-color: black;
 }
 #main .landing-page{
     width: 100%;
@@ -39,6 +56,7 @@ html,body{
 }
 #nav{
     display: flex;
+    top: 10px;
     justify-content: space-between;
     align-items: center;
     width:100%;
@@ -67,7 +85,8 @@ html,body{
     padding: 1vw;
 }
 #menu a:hover{
-    animation:navHover ease-in-out 1s;
+    color:#f1d1e1;
+    transition: 0.5s;
 }
 #menu-icon{
     color: white;
@@ -116,11 +135,11 @@ html,body{
     font-size: 1vw;
 }
 .exploremore{
-    width: 6vw;
+    width: 10vw;
     height: 3vw;
     border: pink;
     font-family: productsans;
-    font-size: 0.8vw;
+    font-size: 0.9vw;
     font-weight: 600;
     border-radius: 1vw;
     background-color: rgba(255, 255, 255, 0.349);
@@ -153,17 +172,18 @@ html,body{
 }
 
 .snacks{
-    /* background-color: #FAE1EE; */
     width: 100%;
     height: 100vh;
+
+    /* background-color: #FAE1EE; TEMP */
 }
 .coffees{
-    /* background-color: #D3D6F0; */
     width: 100%;
     height: 100vh;
+    
+    /* background-color: #D3D6F0; TEMP */
 }
 .both{
-    /* background-color: #FFEAE0; */
     width: 100%;
     height: 100vh;
 }
@@ -188,7 +208,7 @@ html,body{
     justify-content: center;
     width: 50%;
     height: 100vh;
-    opacity: 0;
+    opacity: 1;
 }
 
 .posterBG{
@@ -196,7 +216,7 @@ html,body{
     justify-content: center;
     align-items: center;
     width: 70%;
-    height: 70vh;
+    height: 50vh;
     border-radius: 2vw;
 }
 .poster{
@@ -208,7 +228,6 @@ html,body{
     background-color: #D3D6F0;
 }
 .poster1{
-    /* background-color: coral; */
     background-image: url("../../assets/images/explore/snacks.jpg");
     background-size: cover;
     background-position: center;
@@ -219,7 +238,6 @@ html,body{
     background-color: #e6f0d3;
 }
 .poster2{
-    /* background-color: rgb(136, 197, 98); */
     background-image: url("../../assets/images/explore/coffees1.jpg");    
     background-size: cover;
     background-position: center;
@@ -323,7 +341,7 @@ html,body{
         font-size: 2vw;
     }
     .exploremore{
-        width: 15vw;
+        width: 16vw;
         height: 5vw;
         border: pink;
         font-family: productsans;
@@ -332,21 +350,33 @@ html,body{
     }
 }
 
-@keyframes navHover{
-    
-    25%{
-        color: #f4dbe7;
-        transform: scale(1.03);
-        font-size:18px;
-    }
-    75%{
-        color: #f7deea;
-        transform: scale(1.05);
-        font-size:19px;
-    }
-    100%{
-        color: #f1d1e1;
-        transform: scale(1.5);
-        font-size:20px;
-    }
+.banner {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+
+.banner .content .title{
+    font-family: 'Agbalumo';
+    font-size: 6vw;
+    color: white !important;
+}
+.banner p {
+    font-size: 1vw;
+}
+.banner::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url(../../assets/images/explore/assam4.jpg);
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+
+    mask-image: url(../../assets/images/ink.gif);
+    mask-position: center;
+    mask-size: cover;
 }

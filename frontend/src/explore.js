@@ -1,93 +1,120 @@
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger'; // Import the ScrollTrigger plugin
-// gsap.registerPlugin(ScrollTrigger); // Register the plugin
-
-
-//  const t1 =gsap.timeline();
-// // // t1.from(".snacks",{yPercent:-100})
-//  t1.from(".coffees",{backgroundColor:"white"})
-//  .from(".coffees",{backgroundColor:"white"})
- 
-
-// // ScrollTrigger.create({
-// //     animation:t1,
-// //     trigger:".snacks",
-// //     start:"0% 0%",
-// //     end:"100% 0%",
-// //     scrub:2,
-// //     pin:true,
-// //     anticipatePin:1,
-// //     markers:true
-// // });
-
-
-// // Add background color animation to the timeline
-// .to("#main", {
-//     // rotate:360,
-//     scrollTrigger:{
-//         trigger:".snacks",
-//         scroller:"body",
-//         scrub:2,
-//         pin:true,
-//         anticipatePin:1,
-//         markers:true,
-//         onEnter: () => gsap.to('.coffees', {
-//             backgroundColor: "green",
-//             duration: 5
-//         })
-//     }
-// });
-
-// document.getElementById("main").addEventListener("mousemove",(val) =>{
-//     gsap.to("#cursorfollower",{
-//         x:val.x,
-//         y:val.y,
-//         duration:0.6
-//     })
-// })
-
-import 'remixicon/fonts/remixicon.css';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import "remixicon/fonts/remixicon.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
-// // Define the background color changes for each section
-const sections = [
-    { trigger: ".snacks",childtrigger: ".snacks .right", color: "#FAE1EE" }, // Example color for Snacks section
-    { trigger: ".coffees",childtrigger: ".coffees .right", color: "#D3D6F0" }, // Example color for Coffees section
-    { trigger: ".both",childtrigger: ".both .right", color: "#FFEAE0" }    // Example color for Both section
-];
+let sectionCount = 0;
 
+document.fonts.ready.then(() => {
+  gsap.set(".banner .content", { opacity: 1 });
+  let splitBannerTitle = SplitText.create(".banner .title", {
+    type: "chars",
+    aria: "hidden",
+  });
 
-// Loop through each section and create a ScrollTrigger for background color change
-sections.forEach(section => {
-    ScrollTrigger.create({
-        trigger: section.trigger,
-        start: "top 50%",
-        end: "bottom 50%",
-        scrub: true,
-        onEnter: () => {
-            gsap.to("#nav", { backgroundColor: "black", duration: 2, overwrite: "auto" }),
-            gsap.to("#main", { backgroundColor: section.color, duration: 2, overwrite: "auto" }),
-            gsap.to(section.childtrigger, { opacity:"1",rotate:"10",y:"12vh", duration: 1, overwrite: "auto" })
-    },
-        onEnterBack: () => {
-            if (section.trigger == '.snacks') {
-                gsap.to("#nav", { backgroundColor: "transparent", duration: 2, overwrite: "auto" })
-            }
-            gsap.to("#main", { backgroundColor: section.color, duration: 2, overwrite: "auto" }),
-            gsap.to(section.childtrigger, { opacity:"1",scale:"0.9",rotate:"0",y:"0vh", duration: 1, overwrite: "auto" })
-    },
-        // markers: true // Optional: shows the start and end markers for debugging
-    });
+  gsap.from(splitBannerTitle.chars, {
+    opacity: 0,
+    duration: 0.5,
+    ease: "sine.out",
+    stagger: 0.1,
+  });
 });
 
-
-// Cursor follower animation
-document.getElementById("main").addEventListener("mousemove", (val) => {
-    gsap.to("#cursorfollower", {
-        x: val.x,
-        y: val.y,
-        duration: 0.6
-    });
+gsap.to(".snacks .right", {
+  scrollTrigger: {
+    trigger: ".snacks",
+    start: "top top",
+    end: "bottom 50%",
+    scrub: true,
+  },
+  opacity: 0,
+  ease: "power1.out",
 });
+gsap.to(".coffees .right", {
+  scrollTrigger: {
+    trigger: ".coffees",
+    start: "top top",
+    end: "bottom 50%",
+    scrub: true,
+  },
+  opacity: 0,
+  ease: "power1.out",
+});
+
+// Background change: Snacks
+ScrollTrigger.create({
+  trigger: ".snacks",
+  start: "top 50%",
+  end: "top top",
+  scrub: true,
+  onEnter: () => {
+    sectionCount++;
+    setBackgroundColor("hsl(328.8, 71.4%, 93.1%)");
+  },
+  onLeaveBack: () => {
+    sectionCount--;
+    setBackgroundColor("transparent");
+  },
+});
+
+// 🔵 Background change: Coffees
+ScrollTrigger.create({
+  trigger: ".coffees",
+  start: "top 50%",
+  end: "top top",
+  scrub: true,
+  onEnter: () => {
+    sectionCount++;
+    setBackgroundColor("hsl(233.8, 49.2%, 88.4%)");
+  },
+  onLeaveBack: () => {
+    sectionCount--;
+    setBackgroundColor("hsl(328.8, 71.4%, 93.1%)");
+  },
+});
+
+// Helper function to update background
+function setBackgroundColor(color) {
+  document.documentElement.style.setProperty("--bg-color", color);
+  if (sectionCount == 0) {
+    console.log("LANDING");
+  }
+  if (sectionCount == 1) {
+    console.log("SNACKS");
+
+    document.fonts.ready.then(() => {
+      gsap.set(".snacks .left", { opacity: 1 });
+      let split = SplitText.create(".snacks .normaltext", {
+        type: "words",
+        aria: "hidden",
+      });
+
+      gsap.from(split.words, {
+        opacity: 0,
+        duration: 1,
+        ease: "sine.out",
+        stagger: 0.1,
+      });
+    });
+  }
+  if (sectionCount == 2) {
+    console.log("COFFEES");
+
+    document.fonts.ready.then(() => {
+      gsap.set(".coffees .left", { opacity: 1 });
+      let split = SplitText.create(".coffees .normaltext", {
+        type: "words",
+        aria: "hidden",
+      });
+
+      gsap.from(split.words, {
+        opacity: 0,
+        duration: 1,
+        ease: "sine.out",
+        stagger: 0.1,
+      });
+    });
+  }
+}
