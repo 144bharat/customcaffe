@@ -1,0 +1,56 @@
+/* @import url('https://fonts.googleapis.com/css?family=Agbalumo');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+}
+.coffeeCup{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+.coffeeCup .title{
+    font-family: 'Agbalumo';
+    font-size: 6vw;
+    color: white !important;
+}
+.coffeeCup::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url(../../assets/images/menu/drinks/coffeecup.png);
+    background-size: cover;
+    background-position: center;
+z-index: -1;
+    mask-image: url(../../assets/images/explore/black-coffeeBG2.jpg);
+    mask-position: center;
+    mask-size: cover;
+} */
+
+
+.coffeeCup {
+    width: 500px; /* adjust size as needed */
+    height: 500px;
+    background-image: url(../../assets/images/explore/assam1.jpg);
+    background-size: cover;
+    background-position: center;
+
+    mask-image: url(../../assets/images/menu/drinks/coffeecup.png);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+
+    -webkit-mask-image: url(../../assets/images/menu/drinks/coffeecup.png);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+}

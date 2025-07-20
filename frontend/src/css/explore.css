@@ -68,21 +68,30 @@ body{
     gap:5px;
     text-wrap: nowrap;
     align-items: center;
-    font-size: 18px;
-    color: white;
+    font-size: 1.5rem; /*18px*/
+    /* color: white; */
     font-family: "Edu AU VIC WA NT Hand", cursive;
     font-optical-sizing: auto;
-    font-weight: 700;
+    font-weight: 900;
     font-style: normal;
+
+    color: #ffffff;
+  text-shadow: 0 0 2px #000;
+  background-color: transparent;
 }
 
 #menu a{
     font-family: productsans;
-    font-size:16px;
-    color: white;
+    font-size:1.2rem;/*16px*/
+    /* color: white; */
     text-decoration: none;
     font-weight: 600;
     padding: 1vw;
+
+    color: #ffffff;
+  text-shadow: 0 0 2px #000;
+  background-color: transparent;
+
 }
 #menu a:hover{
     color:#f1d1e1;
@@ -132,7 +141,9 @@ body{
 .normaltext{
     font-family: productsans;
     color: rgb(70, 67, 67);
-    font-size: 1vw;
+    font-size: 1.1vw;
+    line-height: 1.4;
+    word-spacing: 5px;
 }
 .exploremore{
     width: 10vw;
@@ -361,12 +372,16 @@ body{
 
 .banner .content .title{
     font-family: 'Agbalumo';
-    font-size: 6vw;
+    font-size: 7vw;
     color: white !important;
 }
-.banner p {
+/* .banner p {
     font-size: 1vw;
+} */
+.content p{
+font-size: 1.5vw;
 }
+
 .banner::before{
     content: '';
     position: absolute;
